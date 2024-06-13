@@ -59,13 +59,13 @@ class Course:
             category.text.strip()
             for category in course_card.find_all("div", class_="course_category")
         ]
-        link = f"https://learn.kodekloud.com/{course_card.find_all('a', class_='course_link')[-1].get('href')}"
+        link = f"https://kodekloud.com/{course_card.find_all('a', class_='course_link')[-1].get('href')}"
 
         return cls(name=name, course_type=course_type, categories=categories, link=link)
 
 
 def get_all_course() -> List[Course]:
-    url = "https://learn.kodekloud.com/courses/"
+    url = "https://kodekloud.com/courses/"
     response = requests.get(url)
     html_content = response.content
     soup = BeautifulSoup(html_content, "html.parser")
